@@ -1,0 +1,129 @@
+qradar_offenses:
+  - offense_name: Brute Force Login Detected
+    magnitude: 7
+    credibility: 4
+    severity: 3
+    relevance: 5
+    start_time: 2025-06-11T07:12:22+04:00
+    source_ip: 192.168.1.100
+    destination: 10.0.0.5
+    user: jsmith
+    rule_triggered: Excessive Login Failures (10 failed attempts in 5 minutes)
+    event_category: Authentication Failure
+    log_source_type: Windows Security Event Logs
+
+  - offense_name: Large Outbound Transfer Detected
+    magnitude: 9
+    credibility: 5
+    severity: 4
+    relevance: 5
+    start_time: 2025-06-11T05:44:10+04:00
+    source_ip: 10.10.10.15
+    destination_ip: 203.0.113.88
+    bytes_sent: 4500000000
+    protocol: HTTPS
+    rule_triggered: Excessive Outbound Data Volume
+    event_category: Network Traffic
+    log_source_type: Firewall
+
+  - offense_name: Malware Activity on Endpoint
+    magnitude: 10
+    credibility: 5
+    severity: 5
+    relevance: 5
+    start_time: 2025-06-11T01:50:00+04:00
+    host: WORKSTATION-22
+    file_detected: C:\Users\alice\AppData\Roaming\troj.exe
+    av_signature: Trojan.GenericKD.456789
+    rule_triggered: Antivirus Malware Detection
+    event_category: Antivirus
+    log_source_type: Windows Defender AV Logs
+
+  - offense_name: PowerShell with Encoded Command
+    magnitude: 8
+    credibility: 5
+    severity: 4
+    relevance: 4
+    start_time: 2025-06-11T09:22:10+04:00
+    user: bob.h
+    host: DEV-WS-01
+    command_line: powershell.exe -EncodedCommand ZXZpbCBzY3JpcHQ=
+    rule_triggered: Suspicious PowerShell Usage
+    event_category: Application Execution
+    custom_property: EncodedCommand Detected
+
+  - offense_name: Unauthorized Admin Group Change
+    magnitude: 9
+    credibility: 5
+    severity: 5
+    relevance: 4
+    start_time: 2025-06-11T06:03:09+04:00
+    affected_user: john.doe
+    initiating_account: svc-patch
+    domain_controller: DC01
+    rule_triggered: Admin Group Modification Alert
+    event_category: User Group Modification
+    log_source_type: Windows Security Logs
+
+  - offense_name: Port Scan Detected
+    magnitude: 6
+    credibility: 3
+    severity: 3
+    relevance: 4
+    start_time: 2025-06-11T04:15:33+04:00
+    source_ip: 172.16.5.25
+    target_ip: 192.168.1.10
+    scanned_ports: [22, 80, 443, 445, 3389]
+    rule_triggered: Port Scan Behavior Identified
+    event_category: Network Activity
+    log_source_type: IDS/IPS
+
+  - offense_name: Ransomware Pattern Detected
+    magnitude: 10
+    credibility: 5
+    severity: 5
+    relevance: 5
+    start_time: 2025-06-11T03:10:18+04:00
+    host: FINANCE-VM1
+    encrypted_files_count: 5000
+    file_extensions: [".locked", ".enc", ".crypt"]
+    rule_triggered: Ransomware File Pattern
+    event_category: File System Activity
+    log_source_type: Endpoint Agent
+
+  - offense_name: Login from Unusual Location
+    magnitude: 8
+    credibility: 4
+    severity: 4
+    relevance: 5
+    start_time: 2025-06-11T10:42:56+04:00
+    user: jdoe
+    usual_country: US
+    login_country: Russia
+    rule_triggered: Impossible Travel or Anomalous Location
+    event_category: User Authentication
+    log_source_type: Azure AD
+
+  - offense_name: Suspicious Script Download
+    magnitude: 7
+    credibility: 4
+    severity: 3
+    relevance: 5
+    start_time: 2025-06-11T08:01:30+04:00
+    url: http://malicious.example.com/setup.ps1
+    host: DEVOPS-TEST
+    rule_triggered: File Download from Blacklisted Domain
+    event_category: Web Activity
+    log_source_type: Proxy Server
+
+  - offense_name: Lateral Movement Detected
+    magnitude: 9
+    credibility: 5
+    severity: 5
+    relevance: 4
+    start_time: 2025-06-11T09:48:00+04:00
+    source_host: HR-LT-12
+    target_hosts: [HR-DC-01, HR-SQL-02, HR-FS-03]
+    rule_triggered: Multiple SMB Auth Attempts Across Hosts
+    event_category: Lateral Movement
+    log_source_type: Windows Event Logs

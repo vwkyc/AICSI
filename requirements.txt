@@ -1,0 +1,10 @@
+openai
+PyYAML
+Flask
+Flask-CORS
+sentence-transformers
+faiss-cpu
+numpy
+tzdata
+python-dotenv
+dotenv
